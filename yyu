@@ -1,0 +1,27 @@
+npm install discord.js
+// Import the discord.js library
+const { Client, GatewayIntentBits } = require('discord.js');
+
+// Create a new client instance
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
+    ]
+});
+
+// When the bot is ready, log to the console
+client.once('ready', () => {
+    console.log('Bot is ready!');
+});
+
+// Set up a simple command: "ping"
+client.on('messageCreate', message => {
+    if (message.content === '!ping') {
+        message.reply('Pong!');
+    }
+});
+
+// Log in to Discord with your bot's token
+client.login('MTMxNTkwMDcxMTk2NzUyMjg5OQ.GK73WZ.G_pc4x6lBdy4TqBkNcJAfnebsiZ1IzwVIdalLQ');
